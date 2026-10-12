@@ -1,0 +1,1040 @@
+/* ==========================================================================
+   StockMaster Pro - Landing Page Styles
+   Diseño Front-End UI/UX: Corporativo / Tech Moderno (Mobile-First)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES CSS & CONFIGURACIÓN GLOBAL
+   -------------------------------------------------------------------------- */
+:root {
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  /* Paleta Corporativa Tech */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-rgb: 37, 99, 235;
+  --primary-subtle: #eff6ff;
+  
+  --secondary: #4f46e5;
+  --accent-cyan: #06b6d4;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+  
+  --dark-900: #0b1120;
+  --dark-800: #0f172a;
+  --dark-700: #1e293b;
+  --dark-600: #334155;
+  
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50:  #f8fafc;
+  
+  --body-bg: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  
+  /* Gradientes */
+  --grad-primary: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+  --grad-hero-text: linear-gradient(135deg, #0f172a 30%, #2563eb 100%);
+  --grad-badge: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(79, 70, 229, 0.15) 100%);
+  --grad-glow: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+
+  /* Sombras y Glassmorphism */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+  --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.2);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset y Base */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--body-bg);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: rgba(37, 99, 235, 0.2);
+  color: var(--primary);
+}
+
+/* --------------------------------------------------------------------------
+   2. TIPOGRAFÍA Y UTILIDADES DECORATIVAS
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--dark-800);
+}
+
+.text-gradient {
+  background: var(--grad-hero-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-primary {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary);
+  background: var(--grad-badge);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  color: var(--text-muted);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --------------------------------------------------------------------------
+   3. BARRA DE NAVEGACIÓN (NAVBAR)
+   -------------------------------------------------------------------------- */
+.navbar-custom {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+  transition: all var(--transition-smooth);
+  padding: 0.9rem 0;
+  z-index: 1030;
+}
+
+.navbar-custom.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  padding: 0.65rem 0;
+}
+
+.brand-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--dark-800);
+  text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo-wrapper:hover {
+  transform: translateY(-1px);
+  color: var(--primary);
+}
+
+.brand-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--grad-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.navbar-custom .nav-link {
+  color: var(--dark-600);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.navbar-custom .nav-link:hover {
+  color: var(--primary);
+}
+
+.navbar-custom .nav-link.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.navbar-custom .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* Botón Destacado Navbar */
+.btn-nav-demo {
+  background: var(--grad-primary);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 9999px;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25);
+  border: none;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-nav-demo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+  color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. SECCIÓN HERO (PRINCIPAL)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  padding: 7rem 0 5rem;
+  background: 
+    radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 60%, rgba(79, 70, 229, 0.07) 0%, transparent 40%),
+    var(--body-bg);
+  overflow: hidden;
+}
+
+.hero-title {
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-description {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  color: var(--slate-500);
+  margin-bottom: 2.2rem;
+  line-height: 1.65;
+}
+
+/* Botones CTA Hero */
+.btn-cta-primary {
+  background: var(--grad-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--radius-md);
+  border: none;
+  box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.4);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+}
+
+.btn-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -4px rgba(37, 99, 235, 0.5);
+  color: #fff;
+}
+
+.btn-cta-secondary {
+  background: #ffffff;
+  color: var(--dark-700);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--slate-300);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+}
+
+.btn-cta-secondary:hover {
+  background: var(--slate-50);
+  border-color: var(--slate-400);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-stats-strip {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--slate-200);
+  margin-top: 2rem;
+}
+
+.hero-stat-item h4 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  font-weight: 800;
+  color: var(--dark-900);
+}
+
+.hero-stat-item span {
+  font-size: 0.85rem;
+  color: var(--slate-500);
+}
+
+/* --------------------------------------------------------------------------
+   5. MOCKUP ESTILIZADO DE LA INTERFAZ (UI MOCKUP)
+   -------------------------------------------------------------------------- */
+.mockup-wrapper {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.mockup-window {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--slate-200);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.mockup-window:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+.mockup-titlebar {
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--slate-200);
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.window-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.window-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.window-dot.red { background-color: #ef4444; }
+.window-dot.yellow { background-color: #f59e0b; }
+.window-dot.green { background-color: #10b981; }
+
+.window-address-bar {
+  background: #ffffff;
+  border: 1px solid var(--slate-200);
+  border-radius: 6px;
+  padding: 0.15rem 1rem;
+  font-size: 0.75rem;
+  color: var(--slate-500);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 60%;
+  max-width: 320px;
+}
+
+.mockup-content {
+  padding: 1.25rem;
+  background: #f8fafc;
+}
+
+/* Componentes internos del mockup */
+.mockup-kpi-card {
+  background: #ffffff;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.mockup-kpi-title {
+  font-size: 0.725rem;
+  text-transform: uppercase;
+  color: var(--slate-500);
+  font-weight: 600;
+}
+
+.mockup-kpi-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--dark-800);
+  margin: 0;
+}
+
+.mockup-table-container {
+  background: #ffffff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.mockup-table {
+  font-size: 0.825rem;
+  margin-bottom: 0;
+}
+
+.mockup-table th {
+  background: #f8fafc;
+  font-weight: 600;
+  color: var(--slate-600);
+  border-bottom: 1px solid var(--slate-200);
+  padding: 0.65rem 0.85rem;
+}
+
+.mockup-table td {
+  padding: 0.65rem 0.85rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--slate-100);
+}
+
+.mockup-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+}
+
+.badge-cat-tech {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.badge-cat-audio {
+  background-color: #faf5ff;
+  color: #7e22ce;
+  border: 1px solid #e9d5ff;
+}
+
+.badge-cat-oficina {
+  background-color: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.badge-stock-ok {
+  background-color: #ecfdf5;
+  color: #047857;
+}
+
+.badge-stock-low {
+  background-color: #fffbeb;
+  color: #b45309;
+}
+
+/* Insignias flotantes decorativas */
+.floating-badge {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.825rem;
+  font-weight: 700;
+  z-index: 5;
+  animation: floatSlow 4s ease-in-out infinite alternate;
+}
+
+.floating-badge-top {
+  top: -20px;
+  right: -15px;
+}
+
+.floating-badge-bottom {
+  bottom: -20px;
+  left: -15px;
+  animation-delay: -2s;
+}
+
+.float-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+@keyframes floatSlow {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+/* --------------------------------------------------------------------------
+   6. SECCIÓN DE CARACTERÍSTICAS (FEATURES)
+   -------------------------------------------------------------------------- */
+.features-section {
+  padding: 6rem 0;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.feature-card {
+  background: #ffffff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem 1.8rem;
+  height: 100%;
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--grad-primary);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 15px 30px -5px rgba(15, 23, 42, 0.08), 0 0 20px rgba(37, 99, 235, 0.06);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--grad-badge);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin-bottom: 1.4rem;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.feature-card:hover .feature-icon-wrapper {
+  transform: scale(1.08) rotate(3deg);
+  background: var(--grad-primary);
+  color: #ffffff;
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--dark-800);
+}
+
+.feature-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   7. SECCIÓN DE TECNOLOGÍAS (STACK)
+   -------------------------------------------------------------------------- */
+.tech-section {
+  padding: 6rem 0;
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.05) 0%, transparent 60%),
+    var(--slate-50);
+  border-top: 1px solid var(--slate-200);
+  border-bottom: 1px solid var(--slate-200);
+}
+
+.tech-card {
+  background: #ffffff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 1.4rem;
+  text-align: center;
+  height: 100%;
+  transition: all var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tech-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.tech-icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  transition: transform var(--transition-fast);
+}
+
+.tech-card:hover .tech-icon-box {
+  transform: scale(1.1);
+}
+
+/* Variaciones de color por tecnología */
+.tech-spring { background: #eefbf1; color: #6db33f; border: 1px solid #d4f2dc; }
+.tech-sqlite { background: #f0f7ff; color: #003b57; border: 1px solid #cbe3f9; }
+.tech-thymeleaf { background: #f3f9f1; color: #005f0f; border: 1px solid #d2ebd0; }
+.tech-bootstrap { background: #f8f1fd; color: #7952b3; border: 1px solid #ecd8fb; }
+.tech-git { background: #fff5f2; color: #f05032; border: 1px solid #fedcd3; }
+.tech-java { background: #fef7ed; color: #e76f00; border: 1px solid #fedfbe; }
+
+.tech-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: var(--dark-800);
+}
+
+.tech-role {
+  font-size: 0.775rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  margin-bottom: 0.65rem;
+}
+
+.tech-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.tech-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: var(--slate-100);
+  color: var(--slate-600);
+  margin-top: auto;
+}
+
+/* --------------------------------------------------------------------------
+   8. SECCIÓN DE EQUIPO DE DESARROLLO (TEAM)
+   -------------------------------------------------------------------------- */
+.team-section {
+  padding: 6rem 0;
+  background-color: #ffffff;
+}
+
+.team-card {
+  background: #ffffff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  padding: 2.2rem 1.8rem;
+  text-align: center;
+  height: 100%;
+  transition: all var(--transition-smooth);
+  position: relative;
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(37, 99, 235, 0.25);
+}
+
+.team-avatar-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 1.4rem;
+}
+
+.team-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.12);
+}
+
+.team-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+}
+
+.team-member-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--dark-800);
+}
+
+.team-member-role {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.team-member-bio {
+  font-size: 0.885rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.35rem;
+}
+
+.team-socials {
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.team-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--slate-100);
+  color: var(--slate-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.team-social-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   9. BANNER CTA DE LLAMADA FINAL (PRE-FOOTER)
+   -------------------------------------------------------------------------- */
+.cta-banner-section {
+  padding: 4.5rem 0;
+  background: var(--dark-900);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.cta-banner-card {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+}
+
+.cta-banner-title {
+  color: #ffffff;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.cta-banner-desc {
+  color: var(--slate-400);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. PIE DE PÁGINA (FOOTER)
+   -------------------------------------------------------------------------- */
+.footer-custom {
+  background: #080d1a;
+  color: var(--slate-400);
+  padding: 5rem 0 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-brand {
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--slate-400);
+  max-width: 340px;
+}
+
+.footer-heading {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.65rem;
+}
+
+.footer-links a {
+  color: var(--slate-400);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--slate-300);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.footer-social-icon:hover {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   11. BOTÓN VOLVER ARRIBA & ANIMACIONES DE SCROLL REVEAL
+   -------------------------------------------------------------------------- */
+.btn-back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all var(--transition-smooth);
+  z-index: 999;
+}
+
+.btn-back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.btn-back-to-top:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.45);
+}
+
+/* Clases de Reveal al Scrollear */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   12. MODAL DE DEMO INTERACTIVA
+   -------------------------------------------------------------------------- */
+.modal-custom .modal-content {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--slate-200);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  overflow: hidden;
+}
+
+.modal-custom .modal-header {
+  border-bottom: 1px solid var(--slate-200);
+  background: var(--slate-50);
+  padding: 1.25rem 1.75rem;
+}
+
+.modal-custom .modal-body {
+  padding: 1.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   13. MEDIA QUERIES (RESPONSIVE)
+   -------------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+  .hero-section {
+    padding: 5.5rem 0 3.5rem;
+    text-align: center;
+  }
+  
+  .hero-stats-strip {
+    justify-content: center;
+  }
+
+  .floating-badge {
+    display: none; /* Evitar desbordes en móviles */
+  }
+
+  .navbar-collapse {
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    margin-top: 0.75rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--slate-200);
+  }
+
+  .navbar-custom .nav-link.active::after {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-stats-strip {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-cta-primary, .btn-cta-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

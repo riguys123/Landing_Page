@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landing page profesional para el sistema full-stack de gestión de productos y categorías con Spring Boot, SQLite, Thymeleaf y Bootstrap 5.">
+  <meta name="keywords" content="Spring Boot, SQLite, Thymeleaf, Bootstrap 5, Gestión de Inventario, Productos, Categorías, Java, Full Stack">
+  <meta name="author" content="Equipo de Desarrollo Universitario">
+  
+  <title>StockMaster Pro | Sistema Integral de Gestión de Productos y Categorías</title>
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v2h-2V7zm0 4h2v6h-2v-6z'/></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons 1.11.3 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body id="inicio">
+
+  <!-- ======================================================================
+       1. BARRA DE NAVEGACIÓN (NAVBAR)
+       ====================================================================== -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-custom" id="mainNavbar">
+    <div class="container">
+      <!-- Logotipo del Proyecto -->
+      <a class="brand-logo-wrapper" href="#inicio">
+        <div class="brand-icon-box">
+          <i class="bi bi-boxes"></i>
+        </div>
+        <span>Stock<span class="text-primary">Master</span></span>
+      </a>
+
+      <!-- Botón Hamburguesa Móvil -->
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Alternar navegación">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <!-- Enlaces de Navegación Rápida -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="#inicio">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#caracteristicas">Características</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#tecnologias">Tecnologías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#equipo">Equipo</a>
+          </li>
+        </ul>
+
+        <!-- Botón Destacado: Ver Proyecto / Demo -->
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <button class="btn btn-nav-demo w-100" data-bs-toggle="modal" data-bs-target="#demoModal">
+            <i class="bi bi-play-circle-fill"></i>
+            <span>Ver Demo / Proyecto</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================================================================
+       2. SECCIÓN HERO (PRINCIPAL)
+       ====================================================================== -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        
+        <!-- Texto Principal y Llamadas a la Acción (CTA) -->
+        <div class="col-lg-6 text-center text-lg-start">
+          <div class="section-tag reveal-item">
+            <i class="bi bi-stars"></i> Arquitectura Full-Stack v1.0
+          </div>
+          
+          <h1 class="hero-title reveal-item">
+            Control Inteligente y Eficiente de <span class="text-gradient">Productos y Categorías</span>
+          </h1>
+          
+          <p class="hero-description reveal-item">
+            Una solución integral desarrollada con <strong>Spring Boot 3</strong>, <strong>SQLite</strong> y <strong>Thymeleaf</strong>. Diseñada para agilizar el inventario, optimizar tiempos de respuesta y brindar una experiencia fluida tanto a administradores como a usuarios.
+          </p>
+          
+          <!-- Botones de Acción (CTA) -->
+          <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start reveal-item">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-cta-primary">
+              <i class="bi bi-github fs-5"></i>
+              <span>Explorar Repositorio</span>
+            </a>
+            <a href="#caracteristicas" class="btn-cta-secondary">
+              <i class="bi bi-journal-code fs-5"></i>
+              <span>Documentación</span>
+            </a>
+          </div>
+
+          <!-- Métricas Destacadas Rápidas -->
+          <div class="hero-stats-strip reveal-item">
+            <div class="hero-stat-item">
+              <h4>100%</h4>
+              <span>CRUD Funcional</span>
+            </div>
+            <div class="vr bg-secondary opacity-25"></div>
+            <div class="hero-stat-item">
+              <h4>&lt; 50ms</h4>
+              <span>Tiempo de Consulta</span>
+            </div>
+            <div class="vr bg-secondary opacity-25"></div>
+            <div class="hero-stat-item">
+              <h4>Zero-Config</h4>
+              <span>SQLite Embebido</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mockup Estilizado de la Interfaz del Sistema -->
+        <div class="col-lg-6">
+          <div class="mockup-wrapper reveal-item">
+            
+            <!-- Insignia Flotante Superior -->
+            <div class="floating-badge floating-badge-top">
+              <div class="float-icon bg-primary text-white">
+                <i class="bi bi-graph-up-arrow"></i>
+              </div>
+              <div>
+                <div class="text-dark">+35% Productividad</div>
+                <small class="text-muted fw-normal">Gestión automatizada</small>
+              </div>
+            </div>
+
+            <!-- Ventana del Sistema -->
+            <div class="mockup-window">
+              <!-- Barra Superior de la Ventana (macOS Style) -->
+              <div class="mockup-titlebar">
+                <div class="window-dots">
+                  <span class="window-dot red"></span>
+                  <span class="window-dot yellow"></span>
+                  <span class="window-dot green"></span>
+                </div>
+                <div class="window-address-bar">
+                  <i class="bi bi-lock-fill text-success"></i>
+                  <span>localhost:8080/productos</span>
+                </div>
+                <div>
+                  <span class="badge bg-light text-secondary border">Spring Boot MVC</span>
+                </div>
+              </div>
+
+              <!-- Contenido Interno del Mockup -->
+              <div class="mockup-content">
+                <!-- Mini Barra Superior con KPIs -->
+                <div class="row g-2 mb-3">
+                  <div class="col-4">
+                    <div class="mockup-kpi-card">
+                      <span class="mockup-kpi-title">Productos</span>
+                      <p class="mockup-kpi-value text-primary">128</p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="mockup-kpi-card">
+                      <span class="mockup-kpi-title">Categorías</span>
+                      <p class="mockup-kpi-value text-indigo" style="color: #4f46e5;">12</p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="mockup-kpi-card">
+                      <span class="mockup-kpi-title">Stock Alerta</span>
+                      <p class="mockup-kpi-value text-danger">3</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Barra de búsqueda y acción rápida -->
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <div class="input-group input-group-sm w-50">
+                    <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                    <input type="text" id="mockupSearchInput" class="form-control border-start-0" placeholder="Filtrar producto...">
+                  </div>
+                  <button class="btn btn-sm btn-primary py-1 px-2" onclick="triggerMockupAction('Crear', 'Nuevo Producto')">
+                    <i class="bi bi-plus-lg"></i> Nuevo
+                  </button>
+                </div>
+
+                <!-- Tabla Interactiva de Productos -->
+                <div class="mockup-table-container">
+                  <div class="table-responsive">
+                    <table class="table mockup-table table-hover align-middle">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Producto</th>
+                          <th>Categoría</th>
+                          <th>Precio</th>
+                          <th>Estado</th>
+                          <th class="text-end">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-muted fw-bold">#01</td>
+                          <td>
+                            <div class="fw-semibold">MacBook Pro M3</div>
+                            <small class="text-muted">16GB / 512GB SSD</small>
+                          </td>
+                          <td><span class="mockup-badge badge-cat-tech">Tecnología</span></td>
+                          <td class="fw-bold">$1,599.00</td>
+                          <td><span class="badge badge-stock-ok"><i class="bi bi-check2"></i> En Stock (24)</span></td>
+                          <td class="text-end">
+                            <button class="btn btn-sm btn-light border p-1" onclick="triggerMockupAction('Editar', 'MacBook Pro M3')"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-sm btn-light border p-1 text-danger" onclick="triggerMockupAction('Eliminar', 'MacBook Pro M3')"><i class="bi bi-trash"></i></button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-muted fw-bold">#02</td>
+                          <td>
+                            <div class="fw-semibold">Sony WH-1000XM5</div>
+                            <small class="text-muted">Noise Cancelling</small>
+                          </td>
+                          <td><span class="mockup-badge badge-cat-audio">Audio & Sonido</span></td>
+                          <td class="fw-bold">$349.99</td>
+                          <td><span class="badge badge-stock-ok"><i class="bi bi-check2"></i> En Stock (15)</span></td>
+                          <td class="text-end">
+                            <button class="btn btn-sm btn-light border p-1" onclick="triggerMockupAction('Editar', 'Sony WH-1000XM5')"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-sm btn-light border p-1 text-danger" onclick="triggerMockupAction('Eliminar', 'Sony WH-1000XM5')"><i class="bi bi-trash"></i></button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-muted fw-bold">#03</td>
+                          <td>
+                            <div class="fw-semibold">Silla Ergonómica Pro</div>
+                            <small class="text-muted">Soporte Lumbar 3D</small>
+                          </td>
+                          <td><span class="mockup-badge badge-cat-oficina">Mobiliario</span></td>
+                          <td class="fw-bold">$220.00</td>
+                          <td><span class="badge badge-stock-low"><i class="bi bi-exclamation-triangle"></i> Bajo Stock (2)</span></td>
+                          <td class="text-end">
+                            <button class="btn btn-sm btn-light border p-1" onclick="triggerMockupAction('Editar', 'Silla Ergonómica Pro')"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-sm btn-light border p-1 text-danger" onclick="triggerMockupAction('Eliminar', 'Silla Ergonómica Pro')"><i class="bi bi-trash"></i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Insignia Flotante Inferior -->
+            <div class="floating-badge floating-badge-bottom">
+              <div class="float-icon bg-success text-white">
+                <i class="bi bi-database-check"></i>
+              </div>
+              <div>
+                <div class="text-dark">SQLite + JPA Sincronizado</div>
+                <small class="text-muted fw-normal">Transacciones seguras</small>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         3. SECCIÓN DE CARACTERÍSTICAS / FUNCIONALIDADES
+         ====================================================================== -->
+    <section class="features-section" id="caracteristicas">
+      <div class="container">
+        
+        <!-- Encabezado de la Sección -->
+        <div class="text-center mb-5">
+          <div class="section-tag reveal-item">
+            <i class="bi bi-lightning-charge-fill"></i> Potencia y Simplicidad
+          </div>
+          <h2 class="section-title reveal-item">
+            Funcionalidades Diseñadas para la Máxima Eficiencia
+          </h2>
+          <p class="section-subtitle reveal-item">
+            Cada módulo ha sido cuidadosamente construido para proporcionar una administración intuitiva, rápida y sin complejidades innecesarias.
+          </p>
+        </div>
+
+        <!-- Grid de Tarjetas de Características -->
+        <div class="row g-4">
+          
+          <!-- Característica 1: Gestión de Productos y Categorías -->
+          <div class="col-md-6 col-lg-4 reveal-item">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-diagram-3"></i>
+              </div>
+              <h3 class="feature-title">Gestión de Productos &amp; Categorías</h3>
+              <p class="feature-text">
+                Operaciones CRUD completas (Crear, Leer, Actualizar, Eliminar) con relaciones relacionales Many-to-One fluidas y asignación jerárquica instantánea.
+              </p>
+            </div>
+          </div>
+
+          <!-- Característica 2: Interfaz Rápida y Dinámica -->
+          <div class="col-md-6 col-lg-4 reveal-item">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-speedometer2"></i>
+              </div>
+              <h3 class="feature-title">Interfaz Rápida y Dinámica</h3>
+              <p class="feature-text">
+                Vistas optimizadas renderizadas con el motor Thymeleaf e integradas con componentes reactivos de Bootstrap 5 para una experiencia ágil y adaptable.
+              </p>
+            </div>
+          </div>
+
+          <!-- Característica 3: Persistencia Segura de Datos -->
+          <div class="col-md-6 col-lg-4 reveal-item">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <h3 class="feature-title">Persistencia de Datos Segura</h3>
+              <p class="feature-text">
+                Integración con SQLite mediante Spring Data JPA e Hibernate. Almacenamiento local ligero, sin necesidad de configuraciones de servidor complejas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Característica 4: Búsqueda y Filtros en Tiempo Real -->
+          <div class="col-md-6 col-lg-4 reveal-item">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-funnel"></i>
+              </div>
+              <h3 class="feature-title">Filtrado y Búsqueda Multicriterio</h3>
+              <p class="feature-text">
+                Localización inmediata de productos por nombre, código interno, rango de precios o categoría asignada con respuestas instantáneas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Característica 5: Arquitectura MVC Limpia -->
+          <div class="col-md-6 col-lg-4 reveal-item">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-layers"></i>
+              </div>
+              <h3 class="feature-title">Arquitectura MVC Escalable</h3>
+              <p class="feature-text">
+                Separación limpia de responsabilidades en capas: Controladores, Servicios de Negocio, Repositorios JPA y Modelos de Dominio bien definidos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Característica 6: Validaciones y Control de Stock -->
+          <div class="col-md-6 col-lg-4 reveal-item">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="bi bi-bell"></i>
+              </div>
+              <h3 class="feature-title">Control de Stock &amp; Validaciones</h3>
+              <p class="feature-text">
+                Validación de formularios con Hibernate Validator (Jakarta Bean Validation) e indicadores automáticos para productos en niveles de stock crítico.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. SECCIÓN DE TECNOLOGÍAS UTILIZADAS
+         ====================================================================== -->
+    <section class="tech-section" id="tecnologias">
+      <div class="container">
+        
+        <!-- Encabezado de la Sección -->
+        <div class="text-center mb-5">
+          <div class="section-tag reveal-item">
+            <i class="bi bi-cpu-fill"></i> Stack Tecnológico
+          </div>
+          <h2 class="section-title reveal-item">
+            Tecnologías Modernas y de Alto Rendimiento
+          </h2>
+          <p class="section-subtitle reveal-item">
+            Construido sobre herramientas consolidadas de la industria para garantizar estabilidad, seguridad y facilidad de mantenimiento.
+          </p>
+        </div>
+
+        <!-- Grid de Tarjetas Tecnológicas -->
+        <div class="row g-4 justify-content-center">
+          
+          <!-- Spring Boot -->
+          <div class="col-6 col-md-4 col-lg-2 reveal-item">
+            <div class="tech-card">
+              <div class="tech-icon-box tech-spring">
+                <i class="bi bi-gear-wide-connected"></i>
+              </div>
+              <h4 class="tech-title">Spring Boot 3</h4>
+              <span class="tech-role">Backend MVC</span>
+              <p class="tech-desc">Gestión de dependencias, inyección y lógica de negocio.</p>
+              <span class="tech-badge">Java 17+</span>
+            </div>
+          </div>
+
+          <!-- SQLite -->
+          <div class="col-6 col-md-4 col-lg-2 reveal-item">
+            <div class="tech-card">
+              <div class="tech-icon-box tech-sqlite">
+                <i class="bi bi-database"></i>
+              </div>
+              <h4 class="tech-title">SQLite</h4>
+              <span class="tech-role">Base de Datos</span>
+              <p class="tech-desc">Motor relacional ligero, autocontenido y portátil.</p>
+              <span class="tech-badge">JPA / Hibernate</span>
+            </div>
+          </div>
+
+          <!-- Thymeleaf -->
+          <div class="col-6 col-md-4 col-lg-2 reveal-item">
+            <div class="tech-card">
+              <div class="tech-icon-box tech-thymeleaf">
+                <i class="bi bi-filetype-html"></i>
+              </div>
+              <h4 class="tech-title">Thymeleaf</h4>
+              <span class="tech-role">Template Engine</span>
+              <p class="tech-desc">Renderizado de plantillas HTML5 dinámicas en servidor.</p>
+              <span class="tech-badge">Vistas Reactivas</span>
+            </div>
+          </div>
+
+          <!-- Bootstrap 5 -->
+          <div class="col-6 col-md-4 col-lg-2 reveal-item">
+            <div class="tech-card">
+              <div class="tech-icon-box tech-bootstrap">
+                <i class="bi bi-bootstrap"></i>
+              </div>
+              <h4 class="tech-title">Bootstrap 5</h4>
+              <span class="tech-role">Diseño UI/UX</span>
+              <p class="tech-desc">Grid responsivo, tipografía y componentes modernos.</p>
+              <span class="tech-badge">v5.3.3</span>
+            </div>
+          </div>
+
+          <!-- Git & GitHub -->
+          <div class="col-6 col-md-4 col-lg-2 reveal-item">
+            <div class="tech-card">
+              <div class="tech-icon-box tech-git">
+                <i class="bi bi-git"></i>
+              </div>
+              <h4 class="tech-title">Git &amp; GitHub</h4>
+              <span class="tech-role">Versionado</span>
+              <p class="tech-desc">Control de versiones distribuido y trabajo colaborativo.</p>
+              <span class="tech-badge">CI/CD Ready</span>
+            </div>
+          </div>
+
+          <!-- Java 17 LTS -->
+          <div class="col-6 col-md-4 col-lg-2 reveal-item">
+            <div class="tech-card">
+              <div class="tech-icon-box tech-java">
+                <i class="bi bi-cup-hot"></i>
+              </div>
+              <h4 class="tech-title">Java 17</h4>
+              <span class="tech-role">Lenguaje Base</span>
+              <p class="tech-desc">Rendimiento óptimo, tipado seguro y soporte a largo plazo.</p>
+              <span class="tech-badge">OpenSource</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. SECCIÓN DE EQUIPO DE DESARROLLO / CRÉDITOS
+         ====================================================================== -->
+    <section class="team-section" id="equipo">
+      <div class="container">
+        
+        <!-- Encabezado de la Sección -->
+        <div class="text-center mb-5">
+          <div class="section-tag reveal-item">
+            <i class="bi bi-people-fill"></i> Equipo Universitario
+          </div>
+          <h2 class="section-title reveal-item">
+            Mentes Detrás del Proyecto
+          </h2>
+          <p class="section-subtitle reveal-item">
+            Estudiantes apasionados por la ingeniería de software y las buenas prácticas en desarrollo de aplicaciones web de extremo a extremo.
+          </p>
+        </div>
+
+        <!-- Grid de Integrantes del Equipo -->
+        <div class="row g-4 justify-content-center">
+          
+          <!-- Integrante 1 -->
+          <div class="col-md-6 col-lg-4 reveal-item">
+            <div class="team-card">
+              <div class="team-avatar-wrapper">
+                <div class="team-avatar-placeholder">
+                  <span>MP</span>
+                </div>
+              </div>
+              <h3 class="team-member-name">Marco Pérez</h3>
+              <p class="team-member-role">Full-Stack Lead &amp; Arquitectura</p>
+              <p class="team-member-bio">
+                Responsable del diseño de arquitectura en capas con Spring Boot, configuración de persistencia SQLite y orquestación del proyecto.
+              </p>
+              <div class="team-socials">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="team-social-btn" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="team-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="mailto:estudiante@universidad.edu" class="team-social-btn" aria-label="Correo"><i class="bi bi-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Integrante 2 -->
+          <div class="col-md-6 col-lg-4 reveal-item">
+            <div class="team-card">
+              <div class="team-avatar-wrapper">
+                <div class="team-avatar-placeholder" style="background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);">
+                  <span>DL</span>
+                </div>
+              </div>
+              <h3 class="team-member-name">Diego López</h3>
+              <p class="team-member-role">Front-End Developer &amp; UI/UX</p>
+              <p class="team-member-bio">
+                Diseño de interfaces con Bootstrap 5, maquetación de plantillas dinámicas con Thymeleaf y optimización de experiencia de usuario responsiva.
+              </p>
+              <div class="team-socials">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="team-social-btn" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="team-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="mailto:estudiante@universidad.edu" class="team-social-btn" aria-label="Correo"><i class="bi bi-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Integrante 3 -->
+          <div class="col-md-6 col-lg-4 reveal-item">
+            <div class="team-card">
+              <div class="team-avatar-wrapper">
+                <div class="team-avatar-placeholder" style="background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);">
+                  <span>SG</span>
+                </div>
+              </div>
+              <h3 class="team-member-name">Sofía González</h3>
+              <p class="team-member-role">Database &amp; QA Engineer</p>
+              <p class="team-member-bio">
+                Modelado entidad-relación, integridad referencial de productos y categorías, pruebas unitarias y documentación técnica del repositorio.
+              </p>
+              <div class="team-socials">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="team-social-btn" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="team-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="mailto:estudiante@universidad.edu" class="team-social-btn" aria-label="Correo"><i class="bi bi-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Banner Universitario -->
+        <div class="mt-5 p-4 bg-light rounded-4 border text-center reveal-item">
+          <div class="d-flex flex-wrap align-items-center justify-content-center gap-3">
+            <span class="badge bg-primary px-3 py-2 rounded-pill fs-6"><i class="bi bi-mortarboard-fill me-1"></i> Laboratorio 8</span>
+            <span class="text-secondary fw-semibold">Curso de Desarrollo de Software | Proyecto Académico de Gestión Web</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         BANNER DE LLAMADA A LA ACCIÓN (PRE-FOOTER)
+         ====================================================================== -->
+    <section class="cta-banner-section">
+      <div class="container">
+        <div class="cta-banner-card reveal-item">
+          <h2 class="cta-banner-title">¿Listo para probar la solución?</h2>
+          <p class="cta-banner-desc">
+            Clona el repositorio, ejecuta la aplicación en segundos y experimenta la potencia de Spring Boot con SQLite.
+          </p>
+          <div class="d-flex flex-wrap gap-3 justify-content-center">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-cta-primary">
+              <i class="bi bi-github fs-5"></i>
+              <span>Ver Código en GitHub</span>
+            </a>
+            <button class="btn-cta-secondary" data-bs-toggle="modal" data-bs-target="#demoModal">
+              <i class="bi bi-laptop fs-5"></i>
+              <span>Explorar Vista Previa</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       6. PIE DE PÁGINA (FOOTER)
+       ====================================================================== -->
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Información de Marca / Resumen -->
+        <div class="col-lg-4 col-md-6">
+          <a class="footer-brand" href="#inicio">
+            <div class="brand-icon-box" style="width: 34px; height: 34px; font-size: 1rem;">
+              <i class="bi bi-boxes"></i>
+            </div>
+            <span>Stock<span class="text-primary">Master</span> Pro</span>
+          </a>
+          <p class="footer-desc">
+            Plataforma full-stack académica desarrollada con tecnologías web modernas para la administración robusta de productos y categorías en tiempo real.
+          </p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h5 class="footer-heading">Navegación</h5>
+          <ul class="footer-links">
+            <li><a href="#inicio"><i class="bi bi-chevron-right"></i> Inicio</a></li>
+            <li><a href="#caracteristicas"><i class="bi bi-chevron-right"></i> Características</a></li>
+            <li><a href="#tecnologias"><i class="bi bi-chevron-right"></i> Tecnologías</a></li>
+            <li><a href="#equipo"><i class="bi bi-chevron-right"></i> Equipo</a></li>
+          </ul>
+        </div>
+
+        <!-- Stack Tecnológico -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h5 class="footer-heading">Tecnologías</h5>
+          <ul class="footer-links">
+            <li><a href="#tecnologias"><i class="bi bi-check2"></i> Spring Boot 3 MVC</a></li>
+            <li><a href="#tecnologias"><i class="bi bi-check2"></i> Base de Datos SQLite</a></li>
+            <li><a href="#tecnologias"><i class="bi bi-check2"></i> Plantillas Thymeleaf</a></li>
+            <li><a href="#tecnologias"><i class="bi bi-check2"></i> Framework Bootstrap 5</a></li>
+          </ul>
+        </div>
+
+        <!-- Recursos y Proyecto -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-heading">Recursos Oficiales</h5>
+          <p class="small text-muted mb-3">
+            El código fuente se encuentra disponible públicamente bajo licencia libre para fines educativos.
+          </p>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm w-100 py-2">
+            <i class="bi bi-git me-1"></i> Repositorio Oficial
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Barra Inferior de Derechos de Autor -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 <strong>StockMaster Pro</strong>. Desarrollado para Laboratorio 8 - Desarrollo de Software.
+        </div>
+        <div class="text-muted small">
+          Diseñado con <i class="bi bi-heart-fill text-danger"></i> utilizando Bootstrap 5 &amp; Spring Boot.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       BOTÓN VOLVER ARRIBA (BACK TO TOP)
+       ====================================================================== -->
+  <button id="btnBackToTop" class="btn-back-to-top" title="Volver al inicio" aria-label="Volver arriba">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- ======================================================================
+       MODAL DE DEMOSTRACIÓN INTERACTIVA
+       ====================================================================== -->
+  <div class="modal fade modal-custom" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="d-flex align-items-center gap-2">
+            <div class="brand-icon-box" style="width: 32px; height: 32px; font-size: 1rem;">
+              <i class="bi bi-display"></i>
+            </div>
+            <h5 class="modal-title fw-bold" id="demoModalLabel">Demostración Interactiva del Sistema</h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted">
+            Este proyecto implementa una arquitectura modelo-vista-controlador completa. A continuación se presentan las secciones clave del panel de control:
+          </p>
+
+          <!-- Pestañas de Vista Rápida -->
+          <ul class="nav nav-pills mb-3 gap-2" id="demoTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active px-3 py-2 fw-semibold" id="tab-prod-tab" data-bs-toggle="pill" data-bs-target="#tab-prod" type="button" role="tab">
+                <i class="bi bi-box-seam me-1"></i> Módulo Productos
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link px-3 py-2 fw-semibold" id="tab-cat-tab" data-bs-toggle="pill" data-bs-target="#tab-cat" type="button" role="tab">
+                <i class="bi bi-tags me-1"></i> Módulo Categorías
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link px-3 py-2 fw-semibold" id="tab-db-tab" data-bs-toggle="pill" data-bs-target="#tab-db" type="button" role="tab">
+                <i class="bi bi-hdd-network me-1"></i> Persistencia SQLite
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content border rounded-3 p-3 bg-light" id="demoTabsContent">
+            <!-- Pestaña Productos -->
+            <div class="tab-pane fade show active" id="tab-prod" role="tabpanel">
+              <h6 class="fw-bold text-dark"><i class="bi bi-check-circle-fill text-success me-1"></i> Control Total de Catálogo</h6>
+              <p class="small text-muted mb-2">Formulario con validación en servidor para nombre, precio unitario, existencias mínimas y asociación directa con una categoría registrada.</p>
+              <div class="alert alert-info py-2 small mb-0">
+                <i class="bi bi-info-circle me-1"></i> Incluye alertas visuales automáticas cuando el stock es menor a 5 unidades.
+              </div>
+            </div>
+
+            <!-- Pestaña Categorías -->
+            <div class="tab-pane fade" id="tab-cat" role="tabpanel">
+              <h6 class="fw-bold text-dark"><i class="bi bi-diagram-3-fill text-primary me-1"></i> Taxonomía y Agrupación</h6>
+              <p class="small text-muted mb-2">Permite organizar productos de manera estructurada. Las categorías mantienen integridad referencial, impidiendo eliminación accidental de categorías con productos asignados.</p>
+              <div class="alert alert-primary py-2 small mb-0">
+                <i class="bi bi-shield-lock me-1"></i> Integridad referencial asegurada con anotaciones JPA <code>@ManyToOne</code> y <code>@OneToMany</code>.
+              </div>
+            </div>
+
+            <!-- Pestaña SQLite -->
+            <div class="tab-pane fade" id="tab-db" role="tabpanel">
+              <h6 class="fw-bold text-dark"><i class="bi bi-database-fill text-warning me-1"></i> Almacenamiento Local Portable</h6>
+              <p class="small text-muted mb-2">El archivo de base de datos SQLite se genera automáticamente en la raíz del proyecto. No se requiere instalación ni configuración de servicios MySQL o PostgreSQL externos.</p>
+              <div class="alert alert-success py-2 small mb-0">
+                <i class="bi bi-terminal me-1"></i> Ejecución con un solo comando: <code>./mvnw spring-boot:run</code>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3 bg-white border rounded-3 text-center">
+            <h6 class="fw-bold mb-1">¿Deseas desplegar el proyecto localmente?</h6>
+            <p class="small text-muted mb-3">Requisitos: Java JDK 17+ instalado y Maven (o utilizar el wrapper incluido).</p>
+            <div class="bg-dark text-white p-2 rounded text-start font-monospace small">
+              <code>$ git clone https://github.com/tu-usuario/proyecto-inventario.git<br>
+              $ cd proyecto-inventario<br>
+              $ ./mvnw spring-boot:run</code>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+            <i class="bi bi-github me-1"></i> Ir al Repositorio
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast de Notificaciones para Acciones Simuladas -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index: 1100;">
+    <div id="demoToastFeedback" class="toast align-items-center text-bg-dark border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <i class="bi bi-info-circle-fill text-info me-2"></i>
+          <span id="demoToastMessage">Acción procesada correctamente.</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3.3 Bundle con Popper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
