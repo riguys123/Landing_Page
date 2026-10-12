@@ -60,10 +60,4 @@ Luego abre `http://localhost:8000` en tu navegador.
 
 ---
 
-## 👥 Equipo de Desarrollo
-
-- **Marco Pérez** - Full-Stack Lead & Arquitectura Spring Boot
-- **Diego López** - Front-End Developer & UI/UX Designer
-- **Sofía González** - Database Administrator & QA Engineer
-
 *Proyecto desarrollado para la asignatura de Desarrollo de Software (Laboratorio 8).*
